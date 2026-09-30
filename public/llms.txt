@@ -1,0 +1,26 @@
+# TenderX Nepal (टेन्डरएक्स नेपाल)
+
+> Joint Venture Bid & Tender Workspace built for Nepali Contractors | Itahari, Nepal
+
+TenderX Nepal (also known as TenderX, Tender X Nepal, tenderx itahari, टेन्डरएक्स, टेन्डरएक्स नेपाल, टेन्डर नेपाल) is the dedicated digital bid desk platform designed specifically for construction, civil engineering, and infrastructure contractors across Itahari, Koshi Province, and all of Nepal.
+
+## Location & Identity
+- **Name**: TenderX Nepal / TenderX (टेन्डरएक्स नेपाल)
+- **Headquarters / Primary Region**: Itahari (इटहरी), Koshi Province, Nepal
+- **Target Audience**: Nepali contractors, engineering firms, and joint venture (JV) partners participating in public e-GP (electronic Government Procurement) tenders.
+
+## Search Aliases & Targeted Keywords
+- **English**: tenderx, tenderxnepal, tender x nepal, tender nepal, tenderx itahari, tenderx itari, nepal tender, tender in nepal, e-gp nepal tender
+- **Nepali (नेपाली)**: टेन्डरएक्स, टेन्डरएक्स नेपाल, टेन्डर एक्स नेपाल, टेन्डर नेपाल, टेन्डरएक्स इटहरी, टेन्डर इटारी, बोलपत्र नेपाल
+
+## Core Capabilities
+- **Joint Venture (JV) Bid Workspace**: Assemble partner shares, financial contributions, lead partner designations, and automated JV agreements.
+- **Reusable Contractor Profiles**: Maintain verifiable company credentials, tax clearances, VAT records, equipment lists, and key personnel.
+- **Document Preparation & Verification**: Centralize tender documents, bank guarantee formats, bid securities, and compliance matrices.
+- **Bilingual Platform**: Native English and Nepali (नेपाली - Noto Sans Devanagari) support throughout the bid lifecycle.
+
+## Canonical URLs
+- Homepage (English): https://tenderxnepal.com/en
+- Homepage (Nepali): https://tenderxnepal.com/ne
+- XML Sitemap: https://tenderxnepal.com/sitemap.xml
+- Robots Policy: https://tenderxnepal.com/robots.txt
