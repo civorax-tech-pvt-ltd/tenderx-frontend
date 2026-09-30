@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { ReferenceHomepage } from "@/components/public/ReferenceHomepage";
 import { JsonLd } from "@/components/public/JsonLd";
+import { AdPopup } from "@/components/public/AdPopup";
 export async function generateMetadata({
   params,
 }: {
@@ -34,6 +35,7 @@ export default async function HomePage({
   return (
     <>
       <JsonLd locale={locale} />
+      <AdPopup />
       <ReferenceHomepage />
     </>
   );
