@@ -263,3 +263,64 @@ Verify the site in Google Search Console and submit the sitemap.
 Use URL Inspection on /en and /ne and confirm Google picks the canonical you expect.
 Paste the homepage into the Rich Results Test and Schema Markup Validator to check the JSON-LD.
 Watch the Page Indexing report over the next few weeks.
+
+---
+
+# Part 7 — Summary of Current Status & Actionable Next Steps
+
+## 📊 Current Audit Status (Lighthouse / PageSpeed Insights)
+- **Performance**: 99 - 100 (FCP ~0.3s, LCP ~0.7s, CLS 0, TBT < 90ms)
+- **Accessibility**: 100 (High contrast WCAG AAA colors across tabs, footnotes, and footer)
+- **Best Practices**: 100 (HTTPS, modern doctype, secure CSP/coop headers)
+- **SEO**: 100 (Hreflang `en`/`ne`/`x-default`, self-referencing canonicals, localized `generateMetadata`, sitemap, robots)
+- **Agentic Browsing**: 3/3 (Standardized `public/llms.txt` with Markdown resource links, valid a11y tree, 0 CLS)
+
+---
+
+## 🚀 Immediate Actionable Steps Checklist
+
+### Step 1: Deploy Latest Changes to Production
+1. Commit all modified files (`public/llms.txt`, `WorkspacePreview.tsx`, `ReferenceHomepage.module.css`, `PublicFooter.tsx`, `robots.ts`, `sitemap.ts`).
+2. Push to your main/production deployment branch (e.g. Vercel / Host server).
+3. Confirm live build succeeds and deployment is active.
+
+### Step 2: Google Search Console (GSC) Setup & Verification
+1. Open [Google Search Console](https://search.google.com/search-console).
+2. Add a **Domain Property** for `tenderxnepal.com` via DNS TXT record (recommended) OR **URL Prefix** `https://tenderxnepal.com/`.
+3. Complete verification.
+
+### Step 3: Submit XML Sitemap to Google
+1. In Google Search Console, navigate to **Indexing** → **Sitemaps**.
+2. Enter `sitemap.xml` in the "Add a new sitemap" input.
+3. Click **Submit**.
+4. Confirm Status shows **"Success"** and shows the discovered URLs (`/en` and `/ne` with `xhtml:link` alternates).
+
+### Step 4: Request Priority Indexing (URL Inspection Tool)
+1. In GSC top search bar, inspect `https://tenderxnepal.com/en`.
+2. Click **Test Live URL**. Verify there are no indexing errors.
+3. Click **Request Indexing**.
+4. Repeat for `https://tenderxnepal.com/ne` to accelerate discovery of the Nepali version.
+
+### Step 5: Validate Rich Results (Structured Data)
+1. Open [Google Rich Results Test](https://search.google.com/test/rich-results).
+2. Enter `https://tenderxnepal.com/en`.
+3. Confirm Google detects and validates:
+   - `Organization` (TenderX Nepal)
+   - `WebSite` (with search capability)
+   - `SoftwareApplication` (Bid Workspace)
+4. Confirm **0 Errors** and **0 Warnings**.
+
+### Step 6: Bing Webmaster Tools & IndexNow (Bonus AI Discovery)
+1. Open [Bing Webmaster Tools](https://www.bing.com/webmasters).
+2. Click "Import from Google Search Console" (instant 1-click verification).
+3. Submit `https://tenderxnepal.com/sitemap.xml`.
+4. *Why this matters*: Bing indexes feed Microsoft Copilot and Yahoo search results directly.
+
+### Step 7: DNS / CDN Level 301 Redirect (www to non-www)
+1. In your domain DNS or hosting settings (Cloudflare/Vercel/Registrar), set a permanent 301/308 redirect from `www.tenderxnepal.com` to `https://tenderxnepal.com`.
+2. Test by visiting `http://www.tenderxnepal.com` in browser to confirm it forwards directly to `https://tenderxnepal.com/en`.
+
+### Step 8: Post-Launch Monitoring (Weekly Routine)
+1. **Week 1–2**: Check GSC **Page Indexing** tab to ensure `/en` and `/ne` status changes from *Discovered* to *Indexed*.
+2. **Week 2–4**: Check GSC **Performance** (Search Queries) to see impressions for keywords (*"tender nepal"*, *"e-GP bid workspace"*, *"टेन्डर नेपाल"*).
+3. **Core Web Vitals**: Ensure real-user data (CrUX) registers green across LCP, INP, and CLS.

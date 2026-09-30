@@ -9,9 +9,20 @@ TenderX Nepal (also known as TenderX, Tender X Nepal, tenderx itahari, टेन
 - **Headquarters / Primary Region**: Itahari (इटहरी), Koshi Province, Nepal
 - **Target Audience**: Nepali contractors, engineering firms, and joint venture (JV) partners participating in public e-GP (electronic Government Procurement) tenders.
 
+## Core Pages & Endpoints
+- [TenderX Nepal Homepage (English)](https://tenderxnepal.com/en): Digital bid desk and joint venture workspace for Nepali contractors.
+- [TenderX Nepal Homepage (Nepali - नेपाली)](https://tenderxnepal.com/ne): नेपालका निर्माण व्यवसायीका लागि डिजिटल बिड डेस्क तथा संयुक्त उपक्रम (JV) कार्यस्थल।
+- [Joint Venture Bid Workspace](https://tenderxnepal.com/en#workspace): Interactive bid workspace for partner shares, lead partner designations, and project details.
+- [Bid Workflow & How It Works](https://tenderxnepal.com/en#how-it-works): 3-step structured journey from project details to final tender document generation.
+- [Document Generator & Templates](https://tenderxnepal.com/en#documents): Standard Nepali e-GP joint venture agreements, bid submission letters, and partner authorisations.
+- [Contractor Registration](https://tenderxnepal.com/en/register): Register company profile, tax clearances, VAT records, and credentials.
+- [Contractor Login](https://tenderxnepal.com/en/login): Access active bid desks and saved joint venture bids.
+- [XML Sitemap](https://tenderxnepal.com/sitemap.xml): Complete machine-readable XML sitemap.
+- [Robots Policy](https://tenderxnepal.com/robots.txt): Crawler indexing policies and instructions.
+
 ## Search Aliases & Targeted Keywords
-- **English**: tenderx, tenderxnepal, tender x nepal, tender nepal, tenderx itahari, tenderx itari, nepal tender, tender in nepal, e-gp nepal tender
-- **Nepali (नेपाली)**: टेन्डरएक्स, टेन्डरएक्स नेपाल, टेन्डर एक्स नेपाल, टेन्डर नेपाल, टेन्डरएक्स इटहरी, टेन्डर इटारी, बोलपत्र नेपाल
+- **English**: tenderx, tenderxnepal, tender x nepal, tender x, tender nepal, nepal tender, nepal tenders, tender in nepal, tenders in nepal, tenderx itahari, tenderx itari, tender itahari, e-gp nepal tender, egp nepal, bolpatra nepal, bolpatra, joint venture bid workspace nepal, contractor tender software nepal, jv agreement nepal
+- **Nepali (नेपाली)**: टेन्डरएक्स, टेन्डरएक्स नेपाल, टेन्डर एक्स नेपाल, टेन्डर नेपाल, नेपाल टेन्डर, बोलपत्र नेपाल, बोलपत्र, टेन्डरएक्स इटहरी, टेन्डर इटारी, टेन्डर इटहरी, ठेक्कापट्टा नेपाल, इ-जिपि नेपाल
 
 ## Core Capabilities
 - **Joint Venture (JV) Bid Workspace**: Assemble partner shares, financial contributions, lead partner designations, and automated JV agreements.
@@ -19,8 +30,3 @@ TenderX Nepal (also known as TenderX, Tender X Nepal, tenderx itahari, टेन
 - **Document Preparation & Verification**: Centralize tender documents, bank guarantee formats, bid securities, and compliance matrices.
 - **Bilingual Platform**: Native English and Nepali (नेपाली - Noto Sans Devanagari) support throughout the bid lifecycle.
 
-## Canonical URLs
-- Homepage (English): https://tenderxnepal.com/en
-- Homepage (Nepali): https://tenderxnepal.com/ne
-- XML Sitemap: https://tenderxnepal.com/sitemap.xml
-- Robots Policy: https://tenderxnepal.com/robots.txt

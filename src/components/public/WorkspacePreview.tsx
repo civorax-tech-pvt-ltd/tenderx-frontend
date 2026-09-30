@@ -71,7 +71,7 @@ export function WorkspacePreview() {
                     selected ? "text-slate-900" : "text-slate-500 hover:text-slate-700"
                   }`}
                 >
-                  <span className="tabular me-2 text-[12px] font-bold text-slate-400">
+                  <span className="tabular me-2 text-[12px] font-bold text-slate-600">
                     0{i + 1}
                   </span>
                   {t(`tabs.${key}`)}
@@ -103,9 +103,9 @@ export function WorkspacePreview() {
             <div className="flex items-center gap-3">
               <div className="rounded-md border border-slate-200 bg-white px-3 py-2">
                 <p className="text-[13px] font-semibold text-slate-900">{t("footer.badgeTitle")}</p>
-                <p className="mt-0.5 text-[12px] text-slate-500">{t("footer.badgeBody")}</p>
+                <p className="mt-0.5 text-[12px] text-slate-600">{t("footer.badgeBody")}</p>
               </div>
-              <p className="hidden text-[12px] text-slate-500 sm:block">{t("footer.hint")}</p>
+              <p className="hidden text-[12px] text-slate-600 sm:block">{t("footer.hint")}</p>
             </div>
           </div>
         </div>
@@ -125,26 +125,26 @@ function ProjectPanel() {
   return (
     <div className="grid gap-6 md:grid-cols-[1fr_260px]">
       <div>
-        <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-slate-400">
+        <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-slate-600">
           {t("project.header")}
         </p>
         <h3 className="mt-2 text-h3 text-slate-900">{t("project.panelTitle")}</h3>
 
         <dl className="mt-6 grid gap-4 sm:grid-cols-2">
           <div className="rounded-md border border-slate-200 bg-blue-50/50 px-4 py-3 sm:col-span-2">
-            <dt className="text-[12px] font-semibold uppercase tracking-[0.1em] text-slate-500">
+            <dt className="text-[12px] font-semibold uppercase tracking-[0.1em] text-slate-600">
               {t("project.projectName")}
             </dt>
             <dd className="mt-1 text-[15px] font-semibold text-slate-900">{rows[0].caption}</dd>
           </div>
           <div className="rounded-md border border-slate-200 bg-blue-50/50 px-4 py-3">
-            <dt className="text-[12px] font-semibold uppercase tracking-[0.1em] text-slate-500">
+            <dt className="text-[12px] font-semibold uppercase tracking-[0.1em] text-slate-600">
               {t("project.jvName")}
             </dt>
             <dd className="mt-1 text-[15px] font-semibold text-slate-900">{rows[1].caption}</dd>
           </div>
           <div className="rounded-md border border-slate-200 bg-blue-50/50 px-4 py-3">
-            <dt className="text-[12px] font-semibold uppercase tracking-[0.1em] text-slate-500">
+            <dt className="text-[12px] font-semibold uppercase tracking-[0.1em] text-slate-600">
               {t("project.bidType")}
             </dt>
             <dd className="mt-1 text-[15px] font-semibold text-slate-900">{rows[2].caption}</dd>
@@ -162,7 +162,7 @@ function ProjectPanel() {
           </div>
           <p className="tabular mt-3 text-[40px] font-bold leading-none text-slate-900">
             {t("project.progressValue")}
-          </p>
+          </p> 
         </div>
         <div className="mt-5 h-2 w-full overflow-hidden rounded-pill bg-slate-200">
           <div className="h-full w-full rounded-pill bg-blue-500" />
@@ -182,7 +182,7 @@ function PartnersPanel() {
 
   return (
     <div>
-      <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-slate-400">
+      <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-slate-600">
         {t("partners.header")}
       </p>
 
@@ -196,13 +196,13 @@ function PartnersPanel() {
               <Building2 size={18} strokeWidth={1.75} aria-hidden />
             </span>
             <div className="min-w-0 flex-1">
-              <p className="text-[12px] font-semibold uppercase tracking-[0.1em] text-slate-500">
+              <p className="text-[12px] font-semibold uppercase tracking-[0.1em] text-slate-600">
                 {partner.role}
               </p>
               <p className="truncate text-[15px] font-semibold text-slate-900">{partner.company}</p>
             </div>
             <span className="chip">{t("partners.profileReady")}</span>
-            <span className="tabular w-12 text-end text-[14px] font-semibold text-slate-500">
+            <span className="tabular w-12 text-end text-[14px] font-semibold text-slate-600">
               {partner.share}
             </span>
           </li>
@@ -233,7 +233,7 @@ function PartnersPanel() {
         <div className="rounded-md border border-slate-200 bg-white p-4">
           <Users size={18} strokeWidth={1.75} className="text-blue-600" aria-hidden />
           <p className="mt-2 text-[13px] font-semibold text-slate-900">{t("partners.reusable")}</p>
-          <p className="mt-1 text-[12px] text-slate-500">{t("footer.badgeBody")}</p>
+          <p className="mt-1 text-[12px] text-slate-600">{t("footer.badgeBody")}</p>
         </div>
       </div>
     </div>
@@ -250,7 +250,7 @@ function DocumentsPanel() {
 
   return (
     <div>
-      <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-slate-400">
+      <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-slate-600">
         {t("documents.header")}
       </p>
 
@@ -275,11 +275,11 @@ function DocumentsPanel() {
       <div className="mt-5 flex flex-wrap items-center gap-4">
         <span
           role="note"
-          className="inline-flex h-10 cursor-not-allowed items-center rounded-button border border-slate-300 bg-slate-100 px-4 text-[14px] font-semibold text-slate-500"
+          className="inline-flex h-10 cursor-not-allowed items-center rounded-button border border-slate-300 bg-slate-100 px-4 text-[14px] font-semibold text-slate-600"
         >
           {t("documents.generatePreview")}
         </span>
-        <p className="max-w-[420px] text-[12px] text-slate-500">{t("documents.note")}</p>
+        <p className="max-w-[420px] text-[12px] text-slate-600">{t("documents.note")}</p>
       </div>
     </div>
   );

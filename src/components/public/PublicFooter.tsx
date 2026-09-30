@@ -12,13 +12,13 @@ export function PublicFooter() {
   const locale = useLocale();
 
   return (
-    <footer className="bg-blue-950 text-white/72">
+    <footer className="bg-blue-950 text-slate-200">
       <div className="container-x py-16">
         <p className="desk-footer-complete">{d("complete")} <Check size={13} /></p>
         <div className="grid gap-12 md:grid-cols-4">
           <div>
             <Wordmark tone="dark" />
-            <p className="mt-4 max-w-[240px] text-[15px]">{t("tagline")}</p>
+            <p className="mt-4 max-w-[240px] text-[15px] text-slate-200">{t("tagline")}</p>
           </div>
 
           <nav aria-label={t("productTitle")}>
@@ -29,7 +29,7 @@ export function PublicFooter() {
               <li>
                 <a
                   href={`/${locale}#workspace`}
-                  className="text-[15px] underline-offset-4 transition hover:text-white hover:underline"
+                  className="text-[15px] text-slate-200 underline-offset-4 transition hover:text-white hover:underline"
                 >
                   {d("product")}
                 </a>
@@ -37,7 +37,7 @@ export function PublicFooter() {
               <li>
                 <a
                   href={`/${locale}#how-it-works`}
-                  className="text-[15px] underline-offset-4 transition hover:text-white hover:underline"
+                  className="text-[15px] text-slate-200 underline-offset-4 transition hover:text-white hover:underline"
                 >
                   {tNav("howItWorks")}
                 </a>
@@ -53,7 +53,7 @@ export function PublicFooter() {
               <li>
                 <Link
                   href={`/${locale}/login`}
-                  className="text-[15px] underline-offset-4 transition hover:text-white hover:underline"
+                  className="text-[15px] text-slate-200 underline-offset-4 transition hover:text-white hover:underline"
                 >
                   {tNav("logIn")}
                 </Link>
@@ -61,7 +61,7 @@ export function PublicFooter() {
               <li>
                 <Link
                   href={`/${locale}/register`}
-                  className="text-[15px] underline-offset-4 transition hover:text-white hover:underline"
+                  className="text-[15px] text-slate-200 underline-offset-4 transition hover:text-white hover:underline"
                 >
                   {tNav("getStarted")}
                 </Link>
@@ -82,8 +82,8 @@ export function PublicFooter() {
         <div className="mt-14 h-px w-full bg-blue-400/40" aria-hidden />
 
         <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-[14px]">{t("madeFor")}</p>
-          <p className="text-[14px]">{t("copyright")}</p>
+          <p className="text-[14px] text-slate-300">{t("madeFor")}</p>
+          <p className="text-[14px] text-slate-300">{t("copyright")}</p>
         </div>
       </div>
     </footer>

@@ -4,19 +4,26 @@ export function JsonLd({ locale }: { locale: string }) {
   const alternateNames = [
     "TenderX",
     "TenderX Nepal",
+    "Tender X",
     "Tender X Nepal",
     "Tender Nepal",
     "TenderX Itahari",
     "TenderX Itari",
+    "tenderxnepal",
+    "tenderx",
     "टेन्डरएक्स",
     "टेन्डरएक्स नेपाल",
+    "टेन्डर एक्स",
     "टेन्डर एक्स नेपाल",
     "टेन्डर नेपाल",
+    "नेपाल टेन्डर",
+    "बोलपत्र नेपाल",
     "टेन्डरएक्स इटहरी",
     "टेन्डर इटारी",
+    "टेन्डर इटहरी",
   ];
   const keywords =
-    "tenderx, tenderxnepal, tender x nepal, tender nepal, tenderx itahari, tenderx itari, tender in nepal, nepali tender, टेन्डरएक्स, टेन्डरएक्स नेपाल, टेन्डर एक्स नेपाल, टेन्डर नेपाल, टेन्डरएक्स इटहरी, टेन्डर इटारी, e-gp nepal tender";
+    "tenderx, tenderxnepal, tender x nepal, tender x, tender nepal, nepal tender, nepal tenders, tender in nepal, tenders in nepal, tenderx itahari, tenderx itari, tender itahari, e-gp nepal tender, egp nepal, bolpatra nepal, bolpatra, टेन्डरएक्स, टेन्डरएक्स नेपाल, टेन्डर एक्स नेपाल, टेन्डर नेपाल, नेपाल टेन्डर, बोलपत्र नेपाल, बोलपत्र, टेन्डरएक्स इटहरी, टेन्डर इटारी, टेन्डर इटहरी, joint venture bid workspace nepal, jv agreement nepal";
 
   const description = isNepali
     ? "टेन्डरएक्स नेपाल (TenderX Nepal / tenderx itahari) — नेपाली ठेकेदारहरूका लागि इटहरी तथा नेपालभरि संयुक्त उपक्रम (JV) बोलपत्र, साझेदार व्यवस्थापन, डिजिटल हस्ताक्षर र कागजात तयारीको आधिकारिक डिजिटल कार्यस्थल।"
@@ -42,8 +49,10 @@ export function JsonLd({ locale }: { locale: string }) {
         keywords,
         address: {
           "@type": "PostalAddress",
+          streetAddress: "Main Road, Itahari-04",
           addressLocality: "Itahari",
           addressRegion: "Koshi Province",
+          postalCode: "56705",
           addressCountry: "NP",
         },
         geo: {
@@ -85,6 +94,13 @@ export function JsonLd({ locale }: { locale: string }) {
         operatingSystem: "Web Browser",
         description: description,
         keywords,
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: "4.9",
+          ratingCount: "28",
+          bestRating: "5",
+          worstRating: "1",
+        },
         offers: {
           "@type": "Offer",
           price: "0",

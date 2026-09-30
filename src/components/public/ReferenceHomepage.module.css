@@ -102,7 +102,7 @@
   font-weight: 800;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: #2563eb;
+  color: #1d4ed8;
   margin-bottom: 20px;
 }
 .hero .eyebrow {
@@ -233,7 +233,7 @@
   bottom: 15px;
   right: 0;
   font-size: 9px;
-  color: #ffffffa8;
+  color: rgba(255, 255, 255, 0.85);
 }
 .trustBar {
   position: relative;
@@ -367,7 +367,7 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  color: #245eb6;
+  color: #1d4ed8;
   font-weight: 750;
   font-size: 11px;
 }
@@ -616,14 +616,14 @@
   font-size: 9px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #718198;
+  color: #475569;
 }
 .documentStack h3 {
   font-size: 15px;
   margin-top: 5px;
 }
 .documentStack article > svg {
-  color: #7394c3;
+  color: #475569;
   flex-shrink: 0;
 }
 .paperLines {
@@ -637,12 +637,15 @@
 }
 .sampleNote {
   font-size: 10px;
-  color: #7e8690;
+  color: #475569;
   padding: 2px 4px;
 }
 .benefits {
   background: #eeede8;
   padding-block: 75px;
+}
+.benefits .eyebrow {
+  color: #1e40af;
 }
 .benefitGrid {
   display: grid;
