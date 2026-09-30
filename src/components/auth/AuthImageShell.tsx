@@ -30,7 +30,7 @@ export function AuthImageShell({ title, subtitle, children, footer, headerSlot }
       <main className={styles.layout}>
         <aside className={styles.story}>
           <Image
-            src="/images/tenderx-auth-story.png"
+            src="/images/tenderx-auth-story1.png"
             fill
             alt={t("imageDescription")}
             sizes="(max-width: 900px) 100vw, 60vw"

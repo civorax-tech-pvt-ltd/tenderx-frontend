@@ -80,7 +80,7 @@ export function ReferenceHomepage() {
       <main id="main">
         <section className={styles.hero} aria-labelledby="home-title">
           <Image
-            src="/images/tenderx-contractor-review.png"
+            src="/images/tenderx-contractor-review1.png"
             alt=""
             fill
             priority
@@ -249,7 +249,7 @@ export function ReferenceHomepage() {
             <div className={styles.documentGrid}>
               <article className={styles.reuseCard}>
                 <Image
-                  src="/images/tenderx-contractor-review.png"
+                  src="/images/tenderx-contractor-review1.png"
                   alt=""
                   fill
                   sizes="(max-width: 760px) 100vw, 45vw"

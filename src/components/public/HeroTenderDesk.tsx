@@ -30,7 +30,7 @@ export function HeroTenderDesk() {
           <div className="editorial-portrait-heading"><span>{e("photoHeading")}</span><span>NEPAL / TX</span></div>
           <div className="editorial-portrait-image">
             <Image
-              src="/images/tenderx-contractor-review.png"
+              src="/images/tenderx-contractor-review0.png"
               alt={e("photoAlt")}
               width={1122}
               height={1402}
