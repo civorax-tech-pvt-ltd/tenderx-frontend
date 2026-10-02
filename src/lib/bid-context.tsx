@@ -78,8 +78,18 @@ export function BidProvider({ children }: { children: React.ReactNode }) {
   );
 
   const setFields = useCallback((patch: FieldData) => {
-    setFieldData((prev) => ({ ...prev, ...patch }));
-  }, []);
+    setFieldData((prev) => {
+      const next = { ...prev, ...patch };
+      // Auto-suggest JV name if any short name changed and user hasn't manually set it
+      const shortChanged = ["LEAD_PARTNER_SHORT", "FIRST_PARTNER_SHORT", "SECOND_PARTNER_SHORT"].some(
+        (k) => k in patch
+      );
+      if (shortChanged && !jvNameManuallySet) {
+        next.JV_NAME = suggestedJvName(next);
+      }
+      return next;
+    });
+  }, [jvNameManuallySet]);
 
   const setImage = useCallback((imgKey: string, storagePath: string) => {
     setImages((prev) => ({ ...prev, [imgKey]: storagePath }));

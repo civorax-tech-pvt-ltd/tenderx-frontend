@@ -78,8 +78,8 @@ export function SelectField({
         <option value="" disabled>
           {t("select")}
         </option>
-        {options.map((opt) => (
-          <option key={opt.value} value={opt.value}>
+        {options.map((opt, i) => (
+          <option key={i} value={opt.value}>
             {opt.label}
           </option>
         ))}

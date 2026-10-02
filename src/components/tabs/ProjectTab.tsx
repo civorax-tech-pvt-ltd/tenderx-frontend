@@ -60,9 +60,15 @@ export function ProjectTab() {
   const { fieldData } = useBid();
   const isSingle = fieldData.BID_TYPE === "Single Bidder";
 
-  const authorizedOptions = [fieldData.LEAD_PARTNER_CEO, fieldData.FIRST_PARTNER_CEO, fieldData.SECOND_PARTNER_CEO]
-    .filter(Boolean)
-    .map((name) => ({ value: name as string, label: name as string }));
+  const authorizedOptions = (
+    [
+      { role: "lead", name: fieldData.LEAD_PARTNER_CEO },
+      { role: "first", name: fieldData.FIRST_PARTNER_CEO },
+      { role: "second", name: fieldData.SECOND_PARTNER_CEO },
+    ] as const
+  )
+    .filter(({ name }) => Boolean(name))
+    .map(({ role, name }) => ({ value: name as string, label: name as string, key: `${role}-${name}` }));
 
   return (
     <div className="flex flex-col gap-6">
