@@ -95,22 +95,22 @@ export function Sidebar({
     <>
       {isOpen && <div onClick={onClose} className="fixed inset-0 z-30 bg-slate-900/40 lg:hidden" aria-hidden="true" />}
       <aside
-        className={`fixed inset-y-0 left-0 z-40 flex w-72 shrink-0 -translate-x-full flex-col border-r border-slate-200 bg-white transition-[transform,width] duration-200 lg:static lg:translate-x-0 ${narrow} ${
+        className={`fixed inset-y-0 left-0 z-40 flex w-72 shrink-0 -translate-x-full flex-col border-r border-slate-200 bg-white transition-[transform,width] duration-200 dark:border-ink-800 dark:bg-ink-900 lg:static lg:translate-x-0 ${narrow} ${
           isOpen ? "translate-x-0" : ""
         }`}
       >
         {/* Brand */}
-        <div className={`flex h-16 shrink-0 items-center gap-3 border-b border-slate-200 px-4 ${collapsed ? "lg:justify-center lg:px-0" : ""}`}>
+        <div className={`flex h-16 shrink-0 items-center gap-3 border-b border-slate-200 px-4 dark:border-ink-800 ${collapsed ? "lg:justify-center lg:px-0" : ""}`}>
           <Image src="/logo.png" alt="TenderX" width={40} height={26} className="h-7 w-auto shrink-0" priority />
           <div className={`min-w-0 flex-1 ${hideWhenNarrow}`}>
-            <p className="truncate text-[15px] font-bold leading-tight text-slate-900">
+            <p className="truncate text-[15px] font-bold leading-tight text-slate-900 dark:text-ink-100">
               Tender<span className="text-blue-500">X</span> Nepal
             </p>
-            <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400">{t("workspace")}</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400 dark:text-ink-500">{t("workspace")}</p>
           </div>
           <button
             onClick={onToggleCollapsed}
-            className={`hidden rounded-xs p-1 text-slate-400 hover:bg-slate-100 hover:text-slate-600 lg:block ${hideWhenNarrow}`}
+            className={`hidden rounded-xs p-1 text-slate-400 hover:bg-slate-100 hover:text-slate-600 dark:text-ink-500 dark:hover:bg-ink-800 dark:hover:text-ink-300 lg:block ${hideWhenNarrow}`}
             aria-label={t("collapse")}
             title={t("collapse")}
           >
@@ -125,7 +125,7 @@ export function Sidebar({
           {collapsed && (
             <button
               onClick={onToggleCollapsed}
-              className="mb-3 hidden h-10 w-full items-center justify-center rounded-sm text-slate-400 hover:bg-slate-100 hover:text-slate-600 lg:flex"
+              className="mb-3 hidden h-10 w-full items-center justify-center rounded-sm text-slate-400 hover:bg-slate-100 hover:text-slate-600 dark:text-ink-500 dark:hover:bg-ink-800 dark:hover:text-ink-300 lg:flex"
               aria-label={t("expand")}
               title={t("expand")}
             >
@@ -161,12 +161,12 @@ export function Sidebar({
               <div key={group.id} className="mt-5">
                 <button
                   onClick={() => setClosedGroups((prev) => ({ ...prev, [group.id]: !prev[group.id] }))}
-                  className={`mb-1 flex w-full items-center justify-between px-3 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-slate-400 hover:text-slate-600 ${hideWhenNarrow}`}
+                  className={`mb-1 flex w-full items-center justify-between px-3 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-slate-400 hover:text-slate-600 dark:text-ink-500 dark:hover:text-ink-400 ${hideWhenNarrow}`}
                 >
                   {t(group.id)}
                   <ChevronDown size={14} className={`transition-transform ${isClosed ? "-rotate-90" : ""}`} />
                 </button>
-                {collapsed && <div className="mx-3 mb-2 hidden border-t border-slate-200 lg:block" />}
+                {collapsed && <div className="mx-3 mb-2 hidden border-t border-slate-200 dark:border-ink-800 lg:block" />}
 
                 {!isClosed && (
                   <div className="space-y-0.5">
@@ -206,10 +206,10 @@ export function Sidebar({
           })}
 
           <div className="mt-5">
-            <p className={`mb-1 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-slate-400 ${hideWhenNarrow}`}>
+            <p className={`mb-1 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-slate-400 dark:text-ink-500 ${hideWhenNarrow}`}>
               {t("accountGroup")}
             </p>
-            {collapsed && <div className="mx-3 mb-2 hidden border-t border-slate-200 lg:block" />}
+            {collapsed && <div className="mx-3 mb-2 hidden border-t border-slate-200 dark:border-ink-800 lg:block" />}
             <NavButton
               label={t("account")}
               icon={Settings}
@@ -221,7 +221,7 @@ export function Sidebar({
 
           {user?.is_admin && (
             <div className="mt-5">
-              <p className={`mb-1 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-slate-400 ${hideWhenNarrow}`}>
+              <p className={`mb-1 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-slate-400 dark:text-ink-500 ${hideWhenNarrow}`}>
                 {t("admin")}
               </p>
               <a
@@ -229,11 +229,11 @@ export function Sidebar({
                 target="_blank"
                 rel="noopener noreferrer"
                 title={collapsed ? t("adminDashboard") : undefined}
-                className={`flex h-10 w-full items-center gap-3 rounded-sm px-3 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 ${
+                className={`flex h-10 w-full items-center gap-3 rounded-sm px-3 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 dark:text-ink-300 dark:hover:bg-ink-800 dark:hover:text-ink-100 ${
                   collapsed ? "lg:justify-center lg:px-0" : ""
                 }`}
               >
-                <ExternalLink size={18} className="shrink-0 text-slate-400" />
+                <ExternalLink size={18} className="shrink-0 text-slate-400 dark:text-ink-500" />
                 <span className={hideWhenNarrow}>{t("adminDashboard")}</span>
               </a>
             </div>
@@ -270,10 +270,10 @@ function NavButton({
       title={disabled ? disabledHint : collapsed ? label : undefined}
       className={`relative flex h-10 w-full items-center gap-3 rounded-sm px-3 text-sm font-medium transition disabled:cursor-not-allowed disabled:opacity-40 ${
         collapsed ? "lg:justify-center lg:px-0" : ""
-      } ${active ? "bg-blue-50 text-blue-700" : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"}`}
+      } ${active ? "bg-blue-50 text-blue-700 dark:bg-brand-900 dark:text-brand-300" : "text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-ink-300 dark:hover:bg-ink-800 dark:hover:text-ink-100"}`}
     >
       {active && <span className="absolute inset-y-2 left-0 w-[3px] rounded-r bg-blue-500" aria-hidden="true" />}
-      <Icon size={18} className={`shrink-0 ${active ? "text-blue-600" : "text-slate-400"}`} />
+      <Icon size={18} className={`shrink-0 ${active ? "text-blue-600 dark:text-brand-400" : "text-slate-400 dark:text-ink-500"}`} />
       <span className={`flex-1 truncate text-left ${collapsed ? "lg:hidden" : ""}`}>{label}</span>
       {done && (
         <span

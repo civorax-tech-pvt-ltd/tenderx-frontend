@@ -41,7 +41,7 @@ type ReadinessItem = { label: string; ok: boolean; optional?: string };
 function SideCard({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section className={cardClass}>
-      <h3 className="border-b border-slate-100 px-5 py-3.5 text-sm font-semibold text-slate-900">{title}</h3>
+      <h3 className="border-b border-slate-100 px-5 py-3.5 text-sm font-semibold text-slate-900 dark:border-ink-800 dark:text-ink-100">{title}</h3>
       <div className="p-5">{children}</div>
     </section>
   );
@@ -54,15 +54,15 @@ export function ReadinessList({ items }: { items: ReadinessItem[] }) {
         <li key={item.label} className="flex items-center gap-2.5 text-sm">
           <span
             className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full ${
-              item.ok ? "bg-emerald-500 text-white" : "bg-slate-100 text-slate-400"
+              item.ok ? "bg-emerald-500 text-white" : "bg-slate-100 text-slate-400 dark:bg-ink-800 dark:text-ink-500"
             }`}
           >
             {item.ok ? <Check size={12} strokeWidth={3} /> : item.optional ? <Minus size={12} /> : <X size={12} />}
           </span>
-          <span className={item.ok ? "text-slate-700" : "text-slate-500"}>
+          <span className={item.ok ? "text-slate-700 dark:text-ink-300" : "text-slate-500 dark:text-ink-400"}>
             {item.label}
             {item.optional && !item.ok && (
-              <span className="ml-1.5 rounded-xs bg-slate-100 px-1.5 py-0.5 text-[11px] font-semibold text-slate-500">
+              <span className="ml-1.5 rounded-xs bg-slate-100 px-1.5 py-0.5 text-[11px] font-semibold text-slate-500 dark:bg-ink-800 dark:text-ink-400">
                 {item.optional}
               </span>
             )}
@@ -76,7 +76,7 @@ export function ReadinessList({ items }: { items: ReadinessItem[] }) {
 export function ProgressBar({ value, tone = "blue" }: { value: number; tone?: "blue" | "green" | "amber" }) {
   const color = tone === "green" ? "bg-emerald-500" : tone === "amber" ? "bg-amber-500" : "bg-blue-500";
   return (
-    <div className="h-2 overflow-hidden rounded-full bg-slate-100">
+    <div className="h-2 overflow-hidden rounded-full bg-slate-100 dark:bg-ink-800">
       <div className={`h-full rounded-full ${color} transition-[width] duration-300`} style={{ width: `${Math.min(100, Math.max(0, value))}%` }} />
     </div>
   );

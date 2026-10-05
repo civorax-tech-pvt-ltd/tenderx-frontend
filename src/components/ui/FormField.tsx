@@ -40,12 +40,12 @@ export function TextField({
           className={`${inputClass} ${mono ? "font-mono tabular-nums" : ""} ${suffix ? "pr-10" : ""}`}
         />
         {suffix && (
-          <span className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-sm font-semibold text-slate-400">
+          <span className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-sm font-semibold text-slate-400 dark:text-ink-500">
             {suffix}
           </span>
         )}
       </div>
-      {hint && <span className="mt-1.5 block text-xs text-slate-500">{hint}</span>}
+      {hint && <span className="mt-1.5 block text-xs text-slate-500 dark:text-ink-400">{hint}</span>}
     </label>
   );
 }
@@ -84,7 +84,7 @@ export function SelectField({
           </option>
         ))}
       </select>
-      {hint && <span className="mt-1.5 block text-xs text-slate-500">{hint}</span>}
+      {hint && <span className="mt-1.5 block text-xs text-slate-500 dark:text-ink-400">{hint}</span>}
     </label>
   );
 }

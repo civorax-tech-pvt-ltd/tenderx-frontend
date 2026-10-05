@@ -7,6 +7,7 @@ import { defaultLocale, locales } from "@/i18n/request";
 import { AuthProvider } from "@/lib/auth-context";
 import { BidProvider } from "@/lib/bid-context";
 import { QueryProvider } from "@/lib/query-provider";
+import { ThemeProvider } from "@/lib/theme-context";
 import { RevealProvider } from "@/components/public/RevealProvider";
 import { HelpWidget } from "@/components/public/HelpWidget";
 import { ConfirmDialogProvider } from "@/components/ui/ConfirmDialog";
@@ -94,10 +95,12 @@ export default async function LocaleLayout({
           <QueryProvider>
             <AuthProvider>
               <BidProvider>
+                <ThemeProvider>
                 <ConfirmDialogProvider>
                   <RevealProvider>{children}</RevealProvider>
                   <HelpWidget />
                 </ConfirmDialogProvider>
+                </ThemeProvider>
               </BidProvider>
             </AuthProvider>
           </QueryProvider>

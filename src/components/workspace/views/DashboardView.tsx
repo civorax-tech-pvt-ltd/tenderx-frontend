@@ -143,12 +143,12 @@ export function DashboardView() {
         <section className={`${cardClass} p-5 lg:col-span-3`}>
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
-              <p className="text-sm font-medium text-slate-500">{t("currentBid")}</p>
-              <p className="mt-1 truncate text-lg font-bold text-slate-900">
+              <p className="text-sm font-medium text-slate-500 dark:text-ink-400">{t("currentBid")}</p>
+              <p className="mt-1 truncate text-lg font-bold text-slate-900 dark:text-ink-100">
                 {hasCurrentBid ? currentTitle : t("noCurrentBid")}
               </p>
               {hasCurrentBid && fieldData.PROJECT_NAME && (
-                <p className="truncate text-[13px] text-slate-500">{fieldData.PROJECT_NAME}</p>
+                <p className="truncate text-[13px] text-slate-500 dark:text-ink-400">{fieldData.PROJECT_NAME}</p>
               )}
             </div>
             {hasCurrentBid &&
@@ -164,8 +164,8 @@ export function DashboardView() {
           {hasCurrentBid ? (
             <>
               <div className="mt-5 mb-1.5 flex items-baseline justify-between text-sm">
-                <span className="font-semibold text-slate-700">{t("readiness")}</span>
-                <span className="font-semibold tabular-nums text-slate-500">
+                <span className="font-semibold text-slate-700 dark:text-ink-300">{t("readiness")}</span>
+                <span className="font-semibold tabular-nums text-slate-500 dark:text-ink-400">
                   {done}/{total}
                 </span>
               </div>
@@ -180,7 +180,7 @@ export function DashboardView() {
             </>
           ) : (
             <div className="mt-4">
-              <p className="text-sm text-slate-500">{t("noCurrentBidBody")}</p>
+              <p className="text-sm text-slate-500 dark:text-ink-400">{t("noCurrentBidBody")}</p>
               <button onClick={startNewBid} className={`${btn.primary} mt-4`}>
                 <Plus size={16} />
                 {t("newBid")}
@@ -190,7 +190,7 @@ export function DashboardView() {
         </section>
 
         <section className={`${cardClass} p-5 lg:col-span-2`}>
-          <p className="text-sm font-semibold text-slate-900">{t("howItWorks")}</p>
+          <p className="text-sm font-semibold text-slate-900 dark:text-ink-100">{t("howItWorks")}</p>
           <ol className="mt-4 space-y-4">
             {[
               { icon: Users, title: t("how2Title"), body: t("how2Body") },
@@ -198,14 +198,14 @@ export function DashboardView() {
               { icon: Download, title: t("how3Title"), body: t("how3Body") },
             ].map(({ icon: Icon, title, body }, i) => (
               <li key={i} className="flex gap-3">
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-sm bg-blue-50 text-blue-600">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-sm bg-blue-50 text-blue-600 dark:bg-brand-900 dark:text-brand-400">
                   <Icon size={17} />
                 </span>
                 <div>
-                  <p className="text-sm font-semibold text-slate-800">
+                  <p className="text-sm font-semibold text-slate-800 dark:text-ink-200">
                     {i + 1}. {title}
                   </p>
-                  <p className="text-[13px] text-slate-500">{body}</p>
+                  <p className="text-[13px] text-slate-500 dark:text-ink-400">{body}</p>
                 </div>
               </li>
             ))}
@@ -238,7 +238,7 @@ export function DashboardView() {
             <tbody>
               {drafts.data.slice(0, 5).map((d) => (
                 <tr key={d.id} className={trClass}>
-                  <td className={`${td} font-semibold text-slate-900`}>
+                  <td className={`${td} font-semibold text-slate-900 dark:text-ink-100`}>
                     {d.name}
                     {d.id === draftId && (
                       <span className="ml-2">
@@ -246,7 +246,7 @@ export function DashboardView() {
                       </span>
                     )}
                   </td>
-                  <td className={`${td} text-slate-500`} title={dateTime(d.updated_at)}>
+                  <td className={`${td} text-slate-500 dark:text-ink-400`} title={dateTime(d.updated_at)}>
                     {relative(d.updated_at)}
                   </td>
                   <td className={`${td} text-right`}>
@@ -298,11 +298,11 @@ export function DashboardView() {
             <tbody>
               {history.data.items.slice(0, 5).map((item) => (
                 <tr key={item.id} className={trClass}>
-                  <td className={`${td} font-semibold text-slate-900`}>{item.jv_name || item.filename}</td>
+                  <td className={`${td} font-semibold text-slate-900 dark:text-ink-100`}>{item.jv_name || item.filename}</td>
                   <td className={td}>
                     <Badge tone="gray">{t("partnerCount", { count: item.partner_count })}</Badge>
                   </td>
-                  <td className={`${td} text-slate-500`} title={dateTime(item.created_at)}>
+                  <td className={`${td} text-slate-500 dark:text-ink-400`} title={dateTime(item.created_at)}>
                     {relative(item.created_at)}
                   </td>
                   <td className={`${td} text-right`}>

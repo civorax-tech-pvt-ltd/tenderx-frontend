@@ -82,10 +82,10 @@ function ToastCard({ toast, onDismiss }: { toast: Toast; onDismiss: () => void }
   return (
     <div
       role={toast.kind === "error" ? "alert" : "status"}
-      className="pointer-events-auto flex animate-fade-slide items-start gap-3 rounded-md border border-slate-200 bg-white p-3.5 shadow-md-blue"
+      className="pointer-events-auto flex animate-fade-slide items-start gap-3 rounded-md border border-slate-200 bg-white p-3.5 shadow-md-blue dark:border-ink-800 dark:bg-ink-900"
     >
       <Icon size={18} className={`mt-0.5 shrink-0 ${className}`} />
-      <p className="min-w-0 flex-1 whitespace-pre-line text-sm font-medium text-slate-800">{toast.message}</p>
+      <p className="min-w-0 flex-1 whitespace-pre-line text-sm font-medium text-slate-800 dark:text-ink-200">{toast.message}</p>
       <button onClick={onDismiss} className="shrink-0 text-slate-400 hover:text-slate-600" aria-label="Dismiss">
         <X size={16} />
       </button>

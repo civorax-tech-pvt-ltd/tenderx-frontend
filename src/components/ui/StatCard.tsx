@@ -33,8 +33,8 @@ export function StatCard({
         onClick ? "transition hover:-translate-y-px hover:border-blue-200 hover:shadow-md-blue" : ""
       }`}
     >
-      <p className="text-sm font-medium text-slate-500">{label}</p>
-      <p className="mt-2 text-3xl font-bold tracking-tight text-slate-900 tabular-nums">{value}</p>
+      <p className="text-sm font-medium text-slate-500 dark:text-ink-400">{label}</p>
+      <p className="mt-2 text-3xl font-bold tracking-tight text-slate-900 tabular-nums dark:text-ink-100">{value}</p>
       {description && (
         <p className={`mt-2 flex items-center gap-1.5 text-[13px] font-medium ${TONES[tone]}`}>
           <span className="truncate">{description}</span>

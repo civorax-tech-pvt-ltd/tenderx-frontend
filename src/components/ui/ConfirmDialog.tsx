@@ -52,31 +52,31 @@ export function ConfirmDialogProvider({ children }: { children: React.ReactNode 
             onClick={handleCancel}
           />
           {/* Dialog */}
-          <div className="relative w-full max-w-sm rounded-md border border-slate-200 bg-white shadow-xl">
+          <div className="relative w-full max-w-sm rounded-md border border-slate-200 bg-white shadow-xl dark:border-ink-800 dark:bg-ink-900">
             {/* Header */}
             <div className="flex items-start gap-3 p-5">
               <span className={`mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-sm ${
                 opts.variant === "danger"
-                  ? "bg-red-50 text-red-500"
-                  : "bg-amber-50 text-amber-500"
+                  ? "bg-red-50 text-red-500 dark:bg-red-900/20 dark:text-red-400"
+                  : "bg-amber-50 text-amber-500 dark:bg-amber-900/20 dark:text-amber-400"
               }`}>
                 {opts.variant === "danger" ? <Trash2 size={18} /> : <AlertTriangle size={18} />}
               </span>
               <div className="min-w-0 flex-1">
                 {opts.title && (
-                  <h3 className="text-[15px] font-semibold text-slate-900">{opts.title}</h3>
+                  <h3 className="text-[15px] font-semibold text-slate-900 dark:text-ink-100">{opts.title}</h3>
                 )}
-                <p className="mt-0.5 text-sm text-slate-600">{opts.message}</p>
+                <p className="mt-0.5 text-sm text-slate-600 dark:text-ink-300">{opts.message}</p>
               </div>
               <button
                 onClick={handleCancel}
-                className="ml-2 flex h-7 w-7 shrink-0 items-center justify-center rounded-sm text-slate-400 transition hover:bg-slate-100 hover:text-slate-600"
+                className="ml-2 flex h-7 w-7 shrink-0 items-center justify-center rounded-sm text-slate-400 transition hover:bg-slate-100 hover:text-slate-600 dark:text-ink-500 dark:hover:bg-ink-800 dark:hover:text-ink-300"
               >
                 <X size={15} />
               </button>
             </div>
             {/* Footer */}
-            <div className="flex justify-end gap-2 border-t border-slate-100 px-5 py-3">
+            <div className="flex justify-end gap-2 border-t border-slate-100 px-5 py-3 dark:border-ink-800">
               <button onClick={handleCancel} className={`${btn.secondary} ${btn.sm}`}>
                 {opts.cancelLabel ?? "Cancel"}
               </button>

@@ -55,15 +55,15 @@ export function AccountView() {
   return (
     <div className="mx-auto max-w-xl space-y-8">
       <div>
-        <h1 className="text-xl font-bold text-slate-900">{t("title")}</h1>
-        <p className="mt-1 text-sm text-slate-500">{t("subtitle")}</p>
+        <h1 className="text-xl font-bold text-slate-900 dark:text-ink-100">{t("title")}</h1>
+        <p className="mt-1 text-sm text-slate-500 dark:text-ink-400">{t("subtitle")}</p>
       </div>
 
       {/* Change password */}
-      <section className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+      <section className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm dark:border-ink-800 dark:bg-ink-900">
         <div className="mb-5 flex items-center gap-2">
           <KeyRound size={18} className="text-blue-500" />
-          <h2 className="font-semibold text-slate-800">{t("pwTitle")}</h2>
+          <h2 className="font-semibold text-slate-800 dark:text-ink-100">{t("pwTitle")}</h2>
         </div>
         <form onSubmit={handleChangePassword} className="space-y-4">
           <PasswordField
@@ -88,10 +88,10 @@ export function AccountView() {
       </section>
 
       {/* Change email */}
-      <section className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+      <section className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm dark:border-ink-800 dark:bg-ink-900">
         <div className="mb-5 flex items-center gap-2">
           <Mail size={18} className="text-blue-500" />
-          <h2 className="font-semibold text-slate-800">{t("emailTitle")}</h2>
+          <h2 className="font-semibold text-slate-800 dark:text-ink-100">{t("emailTitle")}</h2>
         </div>
         {emailSent ? (
           <div className="rounded-md border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
@@ -114,7 +114,7 @@ export function AccountView() {
               required
               autoComplete="current-password"
             />
-            <p className="text-xs text-slate-500">{t("emailHint")}</p>
+            <p className="text-xs text-slate-500 dark:text-ink-400">{t("emailHint")}</p>
             <button type="submit" disabled={emailLoading} className="btn-primary w-full">
               {emailLoading ? t("sending") : t("emailSave")}
             </button>
