@@ -192,6 +192,25 @@
     "generationCount": "{count, plural, =0 {No bids generated yet} =1 {1 bid generated} other {# bids generated}}",
     "download": "Download"
   },
+  "account": {
+    "title": "Account Settings",
+    "subtitle": "Manage your password and email address.",
+    "pwTitle": "Change Password",
+    "currentPw": "Current password",
+    "newPw": "New password",
+    "pwSave": "Update Password",
+    "pwSuccess": "Password updated successfully.",
+    "pwError": "Could not update password.",
+    "saving": "Saving…",
+    "emailTitle": "Change Email Address",
+    "newEmail": "New email address",
+    "confirmPw": "Confirm with your password",
+    "emailHint": "A verification link will be sent to your new address. Your email changes only after you click it.",
+    "emailSave": "Send Verification Email",
+    "emailSent": "Verification email sent! Check your new inbox and click the link to confirm the change.",
+    "emailError": "Could not request email change.",
+    "sending": "Sending…"
+  },
   "auth": {
     "login": "Log In",
     "register": "Register",
@@ -467,12 +486,15 @@
       "singleBidderHint": "Not used for a single-bidder bid",
       "admin": "Admin",
       "adminDashboard": "Admin Dashboard",
-      "untitledBid": "Untitled bid"
+      "untitledBid": "Untitled bid",
+      "account": "Account Settings",
+      "accountGroup": "Account"
     },
     "user": {
       "menu": "Account menu",
       "adminAccount": "Administrator account",
-      "accessUntil": "Access active until {date}"
+      "accessUntil": "Access active until {date}",
+      "accountSettings": "Account Settings"
     },
     "toast": {
       "saved": "Bid saved.",

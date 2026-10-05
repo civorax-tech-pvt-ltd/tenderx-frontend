@@ -7,6 +7,7 @@ import { TopBar } from "@/components/workspace/TopBar";
 import { BuilderView } from "@/components/workspace/views/BuilderView";
 import { DashboardView } from "@/components/workspace/views/DashboardView";
 import { BidsView, DocumentsView, ProfilesView } from "@/components/workspace/views/LibraryViews";
+import { AccountView } from "@/components/workspace/views/AccountView";
 import { useBid } from "@/lib/bid-context";
 import { isStep, useWorkspace, WorkspaceProvider } from "@/lib/workspace-context";
 
@@ -74,6 +75,7 @@ function Workspace() {
             {view === "bids" && <BidsView />}
             {view === "profiles" && <ProfilesView />}
             {view === "documents" && <DocumentsView />}
+            {view === "account" && <AccountView />}
           </div>
         </main>
       </div>

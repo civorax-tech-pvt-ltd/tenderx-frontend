@@ -7,7 +7,7 @@ import { createContext, useCallback, useContext, useMemo, useRef, useState } fro
 export const BUILDER_STEPS = ["lead", "first", "second", "project"] as const;
 export const FIRST_STEP = BUILDER_STEPS[0];
 export type StepKey = (typeof BUILDER_STEPS)[number];
-export type ViewKey = "dashboard" | StepKey | "bids" | "profiles" | "documents";
+export type ViewKey = "dashboard" | StepKey | "bids" | "profiles" | "documents" | "account";
 
 export function isStep(view: ViewKey): view is StepKey {
   return (BUILDER_STEPS as readonly string[]).includes(view);

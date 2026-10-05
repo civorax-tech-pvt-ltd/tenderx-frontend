@@ -11,6 +11,7 @@ import {
   FolderOpen,
   LayoutDashboard,
   Plus,
+  Settings,
   UserPlus,
   Users,
   Contact,
@@ -203,6 +204,20 @@ export function Sidebar({
               </div>
             );
           })}
+
+          <div className="mt-5">
+            <p className={`mb-1 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-slate-400 ${hideWhenNarrow}`}>
+              {t("accountGroup")}
+            </p>
+            {collapsed && <div className="mx-3 mb-2 hidden border-t border-slate-200 lg:block" />}
+            <NavButton
+              label={t("account")}
+              icon={Settings}
+              active={view === "account"}
+              collapsed={collapsed}
+              onClick={() => go("account")}
+            />
+          </div>
 
           {user?.is_admin && (
             <div className="mt-5">

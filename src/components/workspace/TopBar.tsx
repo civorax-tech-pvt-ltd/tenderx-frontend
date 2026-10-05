@@ -1,6 +1,6 @@
 "use client";
 
-import { CalendarClock, ChevronRight, LogOut, Menu, ShieldCheck } from "lucide-react";
+import { CalendarClock, ChevronRight, LogOut, Menu, Settings, ShieldCheck } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
@@ -20,7 +20,7 @@ export function TopBar({ onMenuClick }: { onMenuClick: () => void }) {
   const tUser = useTranslations("dash.user");
   const locale = useLocale();
   const { user, logout } = useAuth();
-  const { view } = useWorkspace();
+  const { view, setView } = useWorkspace();
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -40,7 +40,12 @@ export function TopBar({ onMenuClick }: { onMenuClick: () => void }) {
     };
   }, [menuOpen]);
 
-  const group = view === "dashboard" ? null : isStep(view) ? t("builder") : t("library");
+  const group =
+    view === "dashboard" || view === "account"
+      ? null
+      : isStep(view)
+        ? t("builder")
+        : t("library");
   const accessUntil = user?.trial_ends_at
     ? new Date(user.trial_ends_at).toLocaleDateString(locale === "ne" ? "ne-NP" : "en-GB", {
         day: "numeric",
@@ -115,6 +120,14 @@ export function TopBar({ onMenuClick }: { onMenuClick: () => void }) {
                   <LanguageSwitcher />
                 </div>
               </div>
+              <button
+                role="menuitem"
+                onClick={() => { setView("account"); setMenuOpen(false); }}
+                className="flex w-full items-center gap-2 border-t border-slate-100 px-4 py-3 text-left text-sm font-medium text-slate-700 hover:bg-slate-50"
+              >
+                <Settings size={16} className="text-slate-400" />
+                {tUser("accountSettings")}
+              </button>
               <button
                 role="menuitem"
                 onClick={logout}
