@@ -28,11 +28,11 @@ export function PublicHeader() {
     addEventListener("resize", resize);
     return () => { document.body.style.overflow = previous; removeEventListener("resize", resize); };
   }, [open]);
-  const links = [{ href: "#workspace", label: d("product") }, { href: "#how-it-works", label: d("workflow") }, { href: `/${locale}/tenders`, label: "Tenders" }, { href: `/${locale}/login`, label: t("logIn") }, { href: `/${locale}/register`, label: d("createWorkspace") }];
+  const links = [{ href: `/${locale}#workspace`, label: d("product") }, { href: `/${locale}#how-it-works`, label: d("workflow") }, { href: `/${locale}/tenders`, label: "Tenders" }, { href: `/${locale}/login`, label: t("logIn") }, { href: `/${locale}/register`, label: d("createWorkspace") }];
   return <header className={`desk-header${scrolled ? " is-scrolled" : ""}`}>
     <a href="#main" className="desk-skip">{d("skip")}</a>
     <div className="container-x desk-header-inner"><BrandLink />
-      <nav aria-label={d("navigation")} className="desk-nav"><a href="#workspace">{d("product")}</a><a href="#how-it-works">{d("workflow")}</a><Link href={`/${locale}/tenders`}>Tenders</Link><span className="desk-nav-divider" /><LanguageSwitcher /><Link href={`/${locale}/login`}>{t("logIn")}</Link><Link href={`/${locale}/register`} className="desk-nav-cta">{d("createWorkspace")}<span><ArrowRight size={17} /></span></Link></nav>
+      <nav aria-label={d("navigation")} className="desk-nav"><Link href={`/${locale}#workspace`}>{d("product")}</Link><Link href={`/${locale}#how-it-works`}>{d("workflow")}</Link><Link href={`/${locale}/tenders`}>Tenders</Link><span className="desk-nav-divider" /><LanguageSwitcher /><Link href={`/${locale}/login`}>{t("logIn")}</Link><Link href={`/${locale}/register`} className="desk-nav-cta">{d("createWorkspace")}<span><ArrowRight size={17} /></span></Link></nav>
       <button className="desk-menu-button" ref={trigger} aria-label={t("menu")} aria-expanded={open} onClick={() => { dialog.current?.showModal(); setOpen(true); }}><Menu size={22} /></button>
     </div>
     <dialog className="desk-mobile-menu" ref={dialog} onClose={() => { setOpen(false); trigger.current?.focus(); }}>
