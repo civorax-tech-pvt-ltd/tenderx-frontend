@@ -7,7 +7,7 @@ const PHONE = "+977 9705890073";
 const WHATSAPP_NUMBER = "9779705890073";
 const EMAIL = "civoraxt@gmail.com";
 const WEBSITE = "www.tenderxnepal.com";
-const HOURS = "Sun–Fri, 10 AM – 6 PM";
+const HOURS = "24/7 Support";
 
 export function HelpWidget() {
   const [open, setOpen] = useState(false);
