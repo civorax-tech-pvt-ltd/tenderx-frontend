@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { Mail, MessageCircle, Minus, Phone, Globe, HeadphonesIcon } from "lucide-react";
 
-const PHONE = "+977 9861XXXXXX"; // TODO: update with real number
-const WHATSAPP_NUMBER = "9779861XXXXXX"; // TODO: update
+const PHONE = "+977 9705890073";
+const WHATSAPP_NUMBER = "9779705890073";
 const EMAIL = "civoraxt@gmail.com";
 const WEBSITE = "www.tenderxnepal.com";
 const HOURS = "Sun–Fri, 10 AM – 6 PM";
