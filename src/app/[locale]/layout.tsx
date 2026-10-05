@@ -8,6 +8,7 @@ import { AuthProvider } from "@/lib/auth-context";
 import { BidProvider } from "@/lib/bid-context";
 import { QueryProvider } from "@/lib/query-provider";
 import { RevealProvider } from "@/components/public/RevealProvider";
+import { ConfirmDialogProvider } from "@/components/ui/ConfirmDialog";
 import "../globals.css";
 import "../desk.css";
 import "../hero.css";
@@ -92,7 +93,9 @@ export default async function LocaleLayout({
           <QueryProvider>
             <AuthProvider>
               <BidProvider>
-                <RevealProvider>{children}</RevealProvider>
+                <ConfirmDialogProvider>
+                  <RevealProvider>{children}</RevealProvider>
+                </ConfirmDialogProvider>
               </BidProvider>
             </AuthProvider>
           </QueryProvider>

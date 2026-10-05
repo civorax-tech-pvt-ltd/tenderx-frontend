@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useRef, useState } from "react";
+import { useConfirm } from "@/components/ui/ConfirmDialog";
 import { FormCard } from "@/components/ui/FormCard";
 import { TextField } from "@/components/ui/FormField";
 import { ImageUpload } from "@/components/ui/ImageUpload";
@@ -225,6 +226,7 @@ function LoadProfileCard({ role }: { role: PartnerRole }) {
   const { notify } = useWorkspace();
   const queryClient = useQueryClient();
   const [selectedProfileId, setSelectedProfileId] = useState("");
+  const confirm = useConfirm();
 
   const f = (suffix: string) => roleFieldKey(role, suffix);
   const current = Object.fromEntries(
@@ -326,7 +328,10 @@ function LoadProfileCard({ role }: { role: PartnerRole }) {
               </button>
               <button
                 type="button"
-                onClick={() => confirm(tP("confirmDelete", { name: linkedSummary.name })) && deleteProfile.mutate()}
+                onClick={async () => {
+                  const ok = await confirm({ message: tP("confirmDelete", { name: linkedSummary.name }), confirmLabel: "Delete", variant: "danger" });
+                  if (ok) deleteProfile.mutate();
+                }}
                 disabled={deleteProfile.isPending}
                 className={`${btn.danger} ${btn.sm}`}
                 aria-label={t("deleteProfile")}

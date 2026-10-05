@@ -9,6 +9,7 @@ import { btn } from "@/components/ui/styles";
 import { useStepAccess } from "@/components/workspace/Sidebar";
 import { EmployerPdfCard, ReadinessCard, SplitCard } from "@/components/workspace/SummaryPanel";
 import { useGenerateBid, useGeneratePdfs, useSaveBid } from "@/lib/bid-actions";
+import { useConfirm } from "@/components/ui/ConfirmDialog";
 import { useBid } from "@/lib/bid-context";
 import { stepComplete } from "@/lib/validation";
 import { BUILDER_STEPS, FIRST_STEP, useWorkspace, type StepKey } from "@/lib/workspace-context";
@@ -19,6 +20,7 @@ export function BuilderView({ step }: { step: StepKey }) {
   const tTop = useTranslations("topbar");
   const { draftId, draftName, fieldData, isDirty, newBid } = useBid();
   const { setView, lastGeneratedDocId, setLastGeneratedDocId } = useWorkspace();
+  const confirm = useConfirm();
   const stepAccess = useStepAccess();
   const save = useSaveBid();
   const generate = useGenerateBid();
@@ -55,8 +57,9 @@ export function BuilderView({ step }: { step: StepKey }) {
         actions={
           <>
             <button
-              onClick={() => {
-                if (!confirm(tTop("confirmClear"))) return;
+              onClick={async () => {
+                const ok = await confirm({ message: tTop("confirmClear"), confirmLabel: "Clear", variant: "warning" });
+                if (!ok) return;
                 newBid();
                 setLastGeneratedDocId(null);
                 setView(FIRST_STEP);

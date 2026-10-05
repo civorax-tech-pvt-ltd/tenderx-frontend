@@ -2,6 +2,7 @@
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useTranslations } from "next-intl";
+import { useConfirm } from "@/components/ui/ConfirmDialog";
 import { api } from "@/lib/api";
 import { saveDraft, useBid, type DraftOut } from "@/lib/bid-context";
 import { downloadBlob, errorMessage } from "@/lib/download";
@@ -95,6 +96,7 @@ export function useOpenDraft() {
   const tConfirm = useTranslations("dash.confirm");
   const { isDirty, loadDraft } = useBid();
   const { notify, setView, setLastGeneratedDocId } = useWorkspace();
+  const confirm = useConfirm();
 
   const mutation = useMutation({
     mutationFn: (id: string) => api.get<DraftOut>(`/drafts/${id}`),
@@ -109,8 +111,11 @@ export function useOpenDraft() {
 
   return {
     ...mutation,
-    open: (id: string) => {
-      if (isDirty && !confirm(tConfirm("discardChanges"))) return;
+    open: async (id: string) => {
+      if (isDirty) {
+        const ok = await confirm({ message: tConfirm("discardChanges"), confirmLabel: "Discard", variant: "warning" });
+        if (!ok) return;
+      }
       mutation.mutate(id);
     },
   };
@@ -121,9 +126,13 @@ export function useStartNewBid() {
   const tConfirm = useTranslations("dash.confirm");
   const { isDirty, newBid } = useBid();
   const { setView, setLastGeneratedDocId } = useWorkspace();
+  const confirm = useConfirm();
 
-  return () => {
-    if (isDirty && !confirm(tConfirm("discardChanges"))) return;
+  return async () => {
+    if (isDirty) {
+      const ok = await confirm({ message: tConfirm("discardChanges"), confirmLabel: "Discard", variant: "warning" });
+      if (!ok) return;
+    }
     newBid();
     setLastGeneratedDocId(null);
     setView(FIRST_STEP);

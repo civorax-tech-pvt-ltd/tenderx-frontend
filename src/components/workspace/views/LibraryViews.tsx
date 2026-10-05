@@ -4,6 +4,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Contact, Download, FileDown, FolderOpen, Loader2, PenLine, Plus, Save, Search, Trash2, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
+import { useConfirm } from "@/components/ui/ConfirmDialog";
 import { Badge, PageHeader } from "@/components/ui/PageHeader";
 import { btn, inputClass, labelClass } from "@/components/ui/styles";
 import { PROFILE_FIELD_MAP, type ProfileFieldKey } from "@/lib/constants";
@@ -50,6 +51,7 @@ export function BidsView() {
   const startNewBid = useStartNewBid();
   const { relative, dateTime } = useDateFormat();
   const [query, setQuery] = useState("");
+  const confirm = useConfirm();
 
   const remove = useMutation({
     mutationFn: (id: string) => api.del(`/drafts/${id}`),
@@ -112,7 +114,10 @@ export function BidsView() {
                         {t("edit")}
                       </button>
                       <button
-                        onClick={() => confirm(t("confirmDeleteBid", { name: d.name })) && remove.mutate(d.id)}
+                        onClick={async () => {
+                          const ok = await confirm({ title: t("delete"), message: t("confirmDeleteBid", { name: d.name }), confirmLabel: t("delete"), variant: "danger" });
+                          if (ok) remove.mutate(d.id);
+                        }}
                         disabled={remove.isPending}
                         className={`${btn.danger} ${btn.sm}`}
                         aria-label={t("delete")}
@@ -156,6 +161,7 @@ export function ProfilesView() {
   const { relative, dateTime } = useDateFormat();
   const [query, setQuery] = useState("");
   const [editingId, setEditingId] = useState<string | null>(null);
+  const confirm = useConfirm();
 
   const remove = useMutation({
     mutationFn: (id: string) => api.del(`/profiles/${id}`),
@@ -203,7 +209,10 @@ export function ProfilesView() {
                         {t("edit")}
                       </button>
                       <button
-                        onClick={() => confirm(t("confirmDeleteProfile", { name: p.name })) && remove.mutate(p.id)}
+                        onClick={async () => {
+                          const ok = await confirm({ title: t("delete"), message: t("confirmDeleteProfile", { name: p.name }), confirmLabel: t("delete"), variant: "danger" });
+                          if (ok) remove.mutate(p.id);
+                        }}
                         disabled={remove.isPending}
                         className={`${btn.danger} ${btn.sm}`}
                         aria-label={t("delete")}
