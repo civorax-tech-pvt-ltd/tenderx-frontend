@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { Mail, MessageCircle, Minus, Phone, Globe, HeadphonesIcon } from "lucide-react";
 
 const PHONE = "+977 9705890073";
@@ -8,10 +9,9 @@ const WHATSAPP_NUMBER = "9779705890073";
 const BID_SUPPORT_PHONE = "+977 9862123845";
 const EMAIL = "civoraxt@gmail.com";
 const WEBSITE = "www.tenderxnepal.com";
-const HOURS = "24/7 Support";
-
 export function HelpWidget() {
   const [open, setOpen] = useState(false);
+  const t = useTranslations("help");
 
   return (
     <div className="fixed bottom-5 right-5 z-50 flex flex-col items-end gap-2">
@@ -21,7 +21,7 @@ export function HelpWidget() {
           <div className="flex items-center justify-between bg-blue-600 px-4 py-3">
             <div className="flex items-center gap-2 text-white">
               <HeadphonesIcon size={16} />
-              <span className="text-sm font-semibold">Need help?</span>
+              <span className="text-sm font-semibold">{t("title")}</span>
             </div>
             <button
               onClick={() => setOpen(false)}
@@ -33,7 +33,7 @@ export function HelpWidget() {
 
           {/* Hours */}
           <div className="border-b border-slate-100 px-4 py-2">
-            <p className="text-[11px] text-slate-400">{HOURS}</p>
+            <p className="text-[11px] text-slate-400">{t("hours")}</p>
           </div>
 
           {/* Contact links */}
@@ -59,7 +59,7 @@ export function HelpWidget() {
               </span>
               <span>
                 <span className="block">{BID_SUPPORT_PHONE}</span>
-                <span className="block text-[11px] text-slate-400">Bid Document Support</span>
+                <span className="block text-[11px] text-slate-400">{t("bidSupport")}</span>
               </span>
             </a>
 
@@ -72,7 +72,7 @@ export function HelpWidget() {
               <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-500">
                 <MessageCircle size={14} />
               </span>
-              WhatsApp
+              {t("whatsapp")}
             </a>
 
             <a
@@ -106,7 +106,7 @@ export function HelpWidget() {
         className="flex items-center gap-2 rounded-full bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-lg transition hover:bg-blue-700 active:scale-95"
       >
         <HeadphonesIcon size={16} />
-        {!open && "Need help?"}
+        {!open && t("title")}
       </button>
     </div>
   );

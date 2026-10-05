@@ -1,4 +1,10 @@
 {
+  "help": {
+    "title": "Need help?",
+    "hours": "24/7 Support",
+    "whatsapp": "WhatsApp",
+    "bidSupport": "Bid Document Support"
+  },
   "meta": {
     "defaultTitle": "TenderX Nepal — Tender & Joint Venture Bid Workspace | Itahari, Nepal",
     "defaultDescription": "TenderX Nepal (tenderx) is Nepal's dedicated tender and joint-venture bid workspace based in Itahari. Manage company profiles, JV partners, signatures, and bid documents in one place.",
