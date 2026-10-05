@@ -5,6 +5,7 @@ import { Mail, MessageCircle, Minus, Phone, Globe, HeadphonesIcon } from "lucide
 
 const PHONE = "+977 9705890073";
 const WHATSAPP_NUMBER = "9779705890073";
+const BID_SUPPORT_PHONE = "+977 9862123845";
 const EMAIL = "civoraxt@gmail.com";
 const WEBSITE = "www.tenderxnepal.com";
 const HOURS = "24/7 Support";
@@ -44,7 +45,22 @@ export function HelpWidget() {
               <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-blue-50 text-blue-500">
                 <Phone size={14} />
               </span>
-              {PHONE}
+              <span>
+                <span className="block">{PHONE}</span>
+              </span>
+            </a>
+
+            <a
+              href={`tel:${BID_SUPPORT_PHONE.replace(/\s/g, "")}`}
+              className="flex items-center gap-3 px-4 py-3 text-sm text-slate-700 transition hover:bg-slate-50"
+            >
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-blue-50 text-blue-500">
+                <Phone size={14} />
+              </span>
+              <span>
+                <span className="block">{BID_SUPPORT_PHONE}</span>
+                <span className="block text-[11px] text-slate-400">Bid Document Support</span>
+              </span>
             </a>
 
             <a
