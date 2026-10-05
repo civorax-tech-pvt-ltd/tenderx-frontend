@@ -239,6 +239,15 @@ export function Sidebar({
             </div>
           )}
         </nav>
+
+        <div className={`shrink-0 border-t border-slate-200 px-4 py-3 dark:border-ink-800 ${hideWhenNarrow}`}>
+          <p className="text-[10px] leading-tight text-slate-400 dark:text-ink-600">
+            © {new Date().getFullYear()} TenderX Nepal
+          </p>
+          <p className="text-[10px] leading-tight text-slate-400 dark:text-ink-600">
+            Developed by CivoraX Tech Pvt. Ltd.
+          </p>
+        </div>
       </aside>
     </>
   );

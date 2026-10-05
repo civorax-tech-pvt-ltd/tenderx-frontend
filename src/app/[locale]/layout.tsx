@@ -45,10 +45,14 @@ export async function generateMetadata({
     description: t("defaultDescription"),
     keywords: t("keywords"),
     applicationName: "TenderX Nepal",
-    authors: [{ name: "TenderX Nepal", url: SITE_URL }],
-    creator: "TenderX Nepal",
+    authors: [
+      { name: "TenderX Nepal", url: SITE_URL },
+      { name: "CivoraX Tech Pvt. Ltd.", url: "https://www.civorax.com" },
+    ],
+    creator: "CivoraX Tech Pvt. Ltd.",
     publisher: "TenderX Nepal",
     category: "business",
+    classification: "Tender Management, Bid Preparation, Nepal Government Procurement",
     icons: {
       icon: "/logo.png",
       shortcut: "/logo.png",
@@ -61,13 +65,13 @@ export async function generateMetadata({
       alternateLocale,
       title: t("defaultTitle"),
       description: t("defaultDescription"),
-      images: [{ url: "/logo.png", width: 321, height: 211, alt: "TenderX Nepal" }],
+      images: [{ url: `${SITE_URL}/logo.png`, width: 321, height: 211, alt: "TenderX Nepal — Bolpatra & Tender Workspace Nepal" }],
     },
     twitter: {
       card: "summary_large_image",
       title: t("defaultTitle"),
       description: t("defaultDescription"),
-      images: ["/logo.png"],
+      images: [`${SITE_URL}/logo.png`],
     },
   };
 }

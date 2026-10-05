@@ -81,9 +81,12 @@ export function PublicFooter() {
 
         <div className="mt-14 h-px w-full bg-blue-400/40" aria-hidden />
 
-        <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-[14px]">{t("madeFor")}</p>
-          <p className="text-[14px]">{t("copyright")}</p>
+        <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p className="text-[14px]">{t("madeFor")}</p>
+            <p className="mt-1 text-[13px] text-white/50">{t("developedBy")}</p>
+          </div>
+          <p className="text-[14px]">{t("copyright", { year: new Date().getFullYear() })}</p>
         </div>
       </div>
     </footer>

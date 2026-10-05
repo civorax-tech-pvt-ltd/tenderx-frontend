@@ -6,11 +6,13 @@
     "bidSupport": "Bid Document Support"
   },
   "meta": {
-    "defaultTitle": "TenderX Nepal — Tender & Joint Venture Bid Workspace | Itahari, Nepal",
-    "defaultDescription": "TenderX Nepal (tenderx) is Nepal's dedicated tender and joint-venture bid workspace based in Itahari. Manage company profiles, JV partners, signatures, and bid documents in one place.",
-    "homeTitle": "TenderX Nepal (Tender X Nepal) — Tender & JV Bid Workspace | Itahari",
-    "homeDescription": "TenderX Nepal — Prepare tenders and bids in Nepal with confidence. Built for Nepali contractors in Itahari and nationwide for joint-venture bids, signatures, and reusable company profiles.",
-    "keywords": "tenderx, tenderxnepal, tender x nepal, tender nepal, tenderx itahari, tenderx itari, tender in nepal, nepal tender, e-gp nepal, joint venture bid workspace nepal"
+    "defaultTitle": "TenderX Nepal — Bolpatra, Tender & e-GP Bid Workspace | Itahari, Nepal",
+    "defaultDescription": "TenderX Nepal — Nepal's digital workspace for bolpatra (bid documents), PPMO e-GP tenders, and joint venture (JV) bids. Prepare contractor profiles, signatures, and bid documents in one place. Based in Itahari.",
+    "homeTitle": "TenderX Nepal — Bolpatra & Tender Workspace | PPMO e-GP, JV Bid Nepal",
+    "homeDescription": "TenderX Nepal is Nepal's dedicated platform for bolpatra preparation, PPMO e-GP tender submissions, and joint venture (JV) bid documents. Used by Nepali contractors in Itahari and nationwide. Manage partner profiles, digital signatures, and bid documents.",
+    "tendersTitle": "Nepal Tender Notices | PPMO e-GP & Newspaper Tenders — TenderX Nepal",
+    "tendersDescription": "Browse today's latest tender notices from Nepal. Government tenders from PPMO e-GP portal and national newspapers. Filter by category, deadline, and publisher.",
+    "keywords": "tender nepal, bolpatra, ppmo nepal, e-gp nepal, ppmo e-gp, bid nepal, bolpatra taiyar, tender notice nepal, nepal tender notice, joint venture nepal, jv bid nepal, contractor nepal, bid document nepal, tenderx, tenderxnepal, tender x nepal, tenderx nepal, tenderx itahari, tenderx itari, tender in nepal, nepali tender, itahari tender, koshi tender, government tender nepal, tender preparation nepal, joint venture bid workspace nepal, jv contractor nepal, e-gp bid submission nepal, bolpatra nepal, nepal bolpatra, ppmo tender, egp nepal, tender workspace nepal, bid preparation nepal, tender software nepal"
   },
   "editorial": {
     "photoHeading": "Behind every bid, a person.",
@@ -401,7 +403,8 @@
       "accountTitle": "Account",
       "languageTitle": "Language",
       "madeFor": "Made for the work ahead.",
-      "copyright": "© TenderX"
+      "copyright": "© {year} TenderX Nepal. All rights reserved.",
+      "developedBy": "Developed by CivoraX Tech Pvt. Ltd."
     }
   },
   "publicAuth": {
