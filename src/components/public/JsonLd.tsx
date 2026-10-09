@@ -118,7 +118,7 @@ export function JsonLd({ locale }: { locale: string }) {
           },
           {
             "@type": "ContactPoint",
-            telephone: "+977-9862123845",
+            telephone: "+977-9816382405",
             contactType: "technical support",
             contactOption: "TollFree",
             availableLanguage: ["ne"],

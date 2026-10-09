@@ -14,6 +14,7 @@ export function TextField({
   hint,
   suffix,
   inputMode,
+  suggestions,
 }: {
   fieldKey: string;
   label: string;
@@ -24,8 +25,11 @@ export function TextField({
   hint?: string;
   suffix?: string;
   inputMode?: React.HTMLAttributes<HTMLInputElement>["inputMode"];
+  /** Values offered as autocomplete options while typing (native datalist). */
+  suggestions?: string[];
 }) {
   const { fieldData, setField } = useBid();
+  const listId = suggestions?.length ? `${fieldKey}-suggestions` : undefined;
 
   return (
     <label className={span === 2 ? "sm:col-span-2" : undefined}>
@@ -37,8 +41,17 @@ export function TextField({
           value={fieldData[fieldKey] ?? ""}
           placeholder={placeholder}
           onChange={(e) => setField(fieldKey, e.target.value)}
+          list={listId}
+          autoComplete={listId ? "off" : undefined}
           className={`${inputClass} ${mono ? "font-mono tabular-nums" : ""} ${suffix ? "pr-10" : ""}`}
         />
+        {listId && (
+          <datalist id={listId}>
+            {suggestions!.map((v) => (
+              <option key={v} value={v} />
+            ))}
+          </datalist>
+        )}
         {suffix && (
           <span className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-sm font-semibold text-slate-400 dark:text-ink-500">
             {suffix}

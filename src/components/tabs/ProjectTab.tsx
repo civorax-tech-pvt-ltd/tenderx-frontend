@@ -6,22 +6,22 @@ import { FormCard } from "@/components/ui/FormCard";
 import { SelectField, TextField } from "@/components/ui/FormField";
 import { useBid } from "@/lib/bid-context";
 
-/** JV vs single bidder. Shown on the first builder step since it decides whether partner steps 2–3 apply. */
+/** JV vs single bidder. Shown at the top of every builder step since it decides whether partner steps 2–3 apply. */
 export function BidTypeCard() {
   const t = useTranslations("project");
   const tDash = useTranslations("dash.form");
   const { fieldData, setField } = useBid();
 
   const bidTypes = [
-    { value: "Joint Venture", label: t("bidTypeJv"), hint: tDash("jvHint"), icon: Users2 },
     { value: "Single Bidder", label: t("bidTypeSingle"), hint: tDash("singleHint"), icon: User },
+    { value: "Joint Venture", label: t("bidTypeJv"), hint: tDash("jvHint"), icon: Users2 },
   ];
 
   return (
     <FormCard title={t("bidType")} subtitle={tDash("bidTypeHint")} icon={Shapes}>
       <div role="radiogroup" aria-label={t("bidType")} className="grid grid-cols-1 gap-3 sm:col-span-2 sm:grid-cols-2">
         {bidTypes.map(({ value, label, hint, icon: Icon }) => {
-          const selected = (fieldData.BID_TYPE || "Joint Venture") === value;
+          const selected = (fieldData.BID_TYPE || "Single Bidder") === value;
           return (
             <button
               key={value}
@@ -59,6 +59,14 @@ export function ProjectTab() {
   const tDash = useTranslations("dash.form");
   const { fieldData } = useBid();
   const isSingle = fieldData.BID_TYPE === "Single Bidder";
+  // Offer the partners' addresses as JV address suggestions while typing.
+  const addressSuggestions = [
+    ...new Set(
+      [fieldData.LEAD_ADDRESS, ...(isSingle ? [] : [fieldData.FIRST_ADDRESS, fieldData.SECOND_ADDRESS])]
+        .map((a) => a?.trim())
+        .filter((a): a is string => Boolean(a))
+    ),
+  ];
 
   const authorizedOptions = (
     [
@@ -79,7 +87,7 @@ export function ProjectTab() {
           placeholder={isSingle ? tDash("firmNamePlaceholder") : tDash("jvNamePlaceholder")}
           span={2}
         />
-        <TextField fieldKey="JV_ADDRESS" label={t("jvAddress")} placeholder={tDash("addressPlaceholder")} span={2} />
+        <TextField fieldKey="JV_ADDRESS" label={t("jvAddress")} placeholder={tDash("addressPlaceholder")} span={2} suggestions={addressSuggestions} />
       </FormCard>
 
       <FormCard title={t("tenderDetails")} subtitle={tDash("tenderDetailsHint")} icon={Landmark}>

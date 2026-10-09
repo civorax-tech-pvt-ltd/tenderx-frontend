@@ -7,7 +7,7 @@ import { BidTypeCard, ProjectTab } from "@/components/tabs/ProjectTab";
 import { Badge, PageHeader } from "@/components/ui/PageHeader";
 import { btn } from "@/components/ui/styles";
 import { useStepAccess } from "@/components/workspace/Sidebar";
-import { EmployerPdfCard, ReadinessCard, SplitCard } from "@/components/workspace/SummaryPanel";
+import { BidSupportCard, ReadinessCard, SplitCard } from "@/components/workspace/SummaryPanel";
 import { useGenerateBid, useGeneratePdfs, useSaveBid } from "@/lib/bid-actions";
 import { useConfirm } from "@/components/ui/ConfirmDialog";
 import { useBid } from "@/lib/bid-context";
@@ -91,6 +91,8 @@ export function BuilderView({ step }: { step: StepKey }) {
         }
       />
 
+      <BidTypeCard />
+
       {/* Stepper */}
       <ol className="grid grid-cols-2 gap-2 sm:flex sm:items-center sm:gap-0">
         {steps.map((s, i) => {
@@ -133,11 +135,6 @@ export function BuilderView({ step }: { step: StepKey }) {
 
       <div className="grid grid-cols-1 gap-6 xl:grid-cols-[minmax(0,1fr)_340px]">
         <div className="min-w-0">
-          {step === "lead" && (
-            <div className="mb-6">
-              <BidTypeCard />
-            </div>
-          )}
           {step === "project" ? <ProjectTab /> : <PartnerTab role={step} />}
 
           <div className="mt-6 flex items-center justify-between gap-3 border-t border-slate-200 pt-5">
@@ -165,8 +162,8 @@ export function BuilderView({ step }: { step: StepKey }) {
 
         <aside className="flex flex-col gap-6 xl:sticky xl:top-6 xl:self-start">
           <ReadinessCard />
-          <SplitCard />
-          {step === "project" && <EmployerPdfCard />}
+          {fieldData.BID_TYPE !== "Single Bidder" && <SplitCard />}
+          <BidSupportCard />
         </aside>
       </div>
     </div>

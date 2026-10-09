@@ -6,7 +6,7 @@ import { Mail, MessageCircle, Minus, Phone, Globe, HeadphonesIcon } from "lucide
 
 const PHONE = "+977 9705890073";
 const WHATSAPP_NUMBER = "9779705890073";
-const BID_SUPPORT_PHONE = "+977 9862123845";
+const BID_SUPPORT_PHONE = "+977 9816382405";
 const EMAIL = "civoraxt@gmail.com";
 const WEBSITE = "www.tenderxnepal.com";
 export function HelpWidget() {

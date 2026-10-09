@@ -51,6 +51,7 @@ export function PartnerTab({ role }: { role: PartnerRole }) {
   const imgKeys = roleImageKeys(role);
   const percentageKey = PERCENTAGE_KEYS[role];
   const split = percentageTotal(fieldData);
+  const isSingle = fieldData.BID_TYPE === "Single Bidder";
 
   if (locked) {
     return (
@@ -67,6 +68,20 @@ export function PartnerTab({ role }: { role: PartnerRole }) {
   return (
     <div className="flex flex-col gap-6">
       <LoadProfileCard role={role} />
+
+      {!isSingle && (
+      <FormCard title={t("ownership")} subtitle={tDash("ownershipHint")} icon={PieChart}>
+        <TextField
+          fieldKey={percentageKey}
+          label={t("percentage")}
+          mono
+          suffix="%"
+          inputMode="decimal"
+          placeholder="0"
+          hint={tDash("splitTotalNow", { value: split })}
+        />
+      </FormCard>
+      )}
 
       <FormCard title={t("organisationDetails")} subtitle={tDash("organisationHint")} icon={Building2}>
         <TextField fieldKey={f("PARTNER_NAME")} label={t("partnerName")} placeholder={t("profileNamePlaceholder")} span={2} />
@@ -90,18 +105,6 @@ export function PartnerTab({ role }: { role: PartnerRole }) {
         <div className="sm:pt-[26px]">
           <ImageUpload imgKey={imgKeys.md2} label={t("md2Signature")} />
         </div>
-      </FormCard>
-
-      <FormCard title={t("ownership")} subtitle={tDash("ownershipHint")} icon={PieChart}>
-        <TextField
-          fieldKey={percentageKey}
-          label={t("percentage")}
-          mono
-          suffix="%"
-          inputMode="decimal"
-          placeholder="0"
-          hint={tDash("splitTotalNow", { value: split })}
-        />
       </FormCard>
 
       <SaveProfileCard role={role} />

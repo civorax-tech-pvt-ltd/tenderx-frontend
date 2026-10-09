@@ -1,18 +1,11 @@
 "use client";
 
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { Check, Clipboard, FileUp, Minus, X } from "lucide-react";
+import { Check, Headset, MessageCircle, Minus, Phone, X } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useEffect, useRef, useState } from "react";
-import { btn, cardClass } from "@/components/ui/styles";
-import { api, getToken } from "@/lib/api";
-import { useBid, type DraftOut } from "@/lib/bid-context";
-import { errorMessage } from "@/lib/download";
+import { cardClass } from "@/components/ui/styles";
+import { useBid } from "@/lib/bid-context";
 import { PERCENTAGE_KEYS } from "@/lib/constants";
 import { percentageTotal, readiness } from "@/lib/validation";
-import { useWorkspace } from "@/lib/workspace-context";
-
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
 /** Readiness checklist for the current bid, shared by the builder side column and the dashboard. */
 export function useReadiness() {
@@ -29,7 +22,7 @@ export function useReadiness() {
   const items: ReadinessItem[] = [
     { label: t("partnerNamesFilled"), ok: checklist.partnerNamesFilled },
     { label: tB("projectFilled"), ok: Boolean(fieldData.PROJECT_NAME && fieldData.EMPLOYER_NAME) },
-    { label: t("splitComplete"), ok: checklist.splitComplete },
+    ...(fieldData.BID_TYPE === "Single Bidder" ? [] : [{ label: t("splitComplete"), ok: checklist.splitComplete }]),
     { label: t("signatureUploaded"), ok: checklist.signaturePresent, optional: tB("optional") },
   ];
   const required = items.filter((i) => !i.optional);
@@ -152,93 +145,66 @@ export function SplitCard() {
   );
 }
 
-export function EmployerPdfCard() {
+const SUPPORT_PHONE = "+977 9816382405";
+const SUPPORT_WHATSAPP = "9779816382405";
+
+/** Paid bid-preparation help: flat prices and a direct line to the support team. */
+export function BidSupportCard() {
   const t = useTranslations("summary");
-  const { draftId } = useBid();
-  const { notify } = useWorkspace();
-  const queryClient = useQueryClient();
-  const inputRef = useRef<HTMLInputElement>(null);
-  const [pdfUrl, setPdfUrl] = useState<string | null>(null);
-  const [copied, setCopied] = useState(false);
-
-  async function loadPreview() {
-    setPdfUrl(null);
-    if (!draftId) return;
-    const res = await fetch(`${API_URL}/drafts/${draftId}/employer-pdf`, {
-      headers: { Authorization: `Bearer ${getToken()}` },
-    });
-    if (!res.ok) return;
-    const blob = await res.blob();
-    setPdfUrl(URL.createObjectURL(blob));
-  }
-
-  const upload = useMutation({
-    mutationFn: (file: File) => {
-      const form = new FormData();
-      form.append("file", file);
-      return api.put<DraftOut>(`/drafts/${draftId}/employer-pdf`, form);
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["draft", draftId] });
-      loadPreview();
-    },
-    onError: (err) => notify("error", errorMessage(err, t("uploadPdf"))),
-  });
-
-  const copyText = useMutation({
-    mutationFn: async () => {
-      const res = await api.get<{ text: string }>(`/drafts/${draftId}/employer-pdf/text?page=0`);
-      await navigator.clipboard.writeText(res.text);
-    },
-    onSuccess: () => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1500);
-    },
-  });
-
-  useEffect(() => {
-    loadPreview();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [draftId]);
+  const prices = [
+    { label: t("singleEnvelope"), price: "5,000" },
+    { label: t("doubleEnvelope"), price: "10,000" },
+  ];
 
   return (
-    <SideCard title={t("employerPdf")}>
-      {!draftId ? (
-        <p className="text-[13px] text-slate-500">{t("saveDraftFirst")}</p>
-      ) : (
-        <div className="flex flex-col gap-3">
-          <div className="flex gap-2">
-            <button
-              onClick={() => inputRef.current?.click()}
-              disabled={upload.isPending}
-              className={`${btn.secondary} ${btn.sm} flex-1`}
-            >
-              <FileUp size={14} />
-              {upload.isPending ? t("uploading") : t("uploadPdf")}
-            </button>
-            {pdfUrl && (
-              <button onClick={() => copyText.mutate()} className={`${btn.secondary} ${btn.sm} flex-1`}>
-                {copied ? <Check size={14} /> : <Clipboard size={14} />}
-                {copied ? t("copied") : t("copyText")}
-              </button>
-            )}
-          </div>
-          <input
-            ref={inputRef}
-            type="file"
-            accept="application/pdf"
-            className="hidden"
-            onChange={(e) => {
-              const file = e.target.files?.[0];
-              if (file) upload.mutate(file);
-              e.target.value = "";
-            }}
-          />
-          {pdfUrl && (
-            <iframe src={pdfUrl} title={t("employerPdfPreview")} className="h-80 w-full rounded-sm border border-slate-200" />
-          )}
+    <section className="relative overflow-hidden rounded-md bg-gradient-to-br from-blue-600 via-blue-600 to-indigo-700 p-5 text-white shadow-lg shadow-blue-600/25 ring-1 ring-white/10 dark:from-blue-700 dark:via-blue-700 dark:to-indigo-800">
+      <span className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-white/10" />
+      <span className="pointer-events-none absolute -bottom-12 -left-8 h-28 w-28 rounded-full bg-amber-300/15" />
+
+      <div className="relative">
+        <div className="flex items-center gap-2">
+          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-amber-400 text-blue-900">
+            <Headset size={16} />
+          </span>
+          <h3 className="text-base font-bold text-white" style={{ color: "#fff" }}>{t("bidSupportTitle")}</h3>
         </div>
-      )}
-    </SideCard>
+        <p className="mt-2 text-[13px] text-blue-100">{t("bidSupportHint")}</p>
+
+        <ul className="mt-4 space-y-2">
+          {prices.map((p) => (
+            <li
+              key={p.label}
+              className="flex items-center justify-between gap-3 rounded-sm bg-white/12 px-3 py-2.5 ring-1 ring-white/20 backdrop-blur-sm"
+            >
+              <span className="text-sm font-medium text-blue-50">{p.label}</span>
+              <span className="whitespace-nowrap">
+                <span className="text-[11px] font-semibold text-amber-200">NPR </span>
+                <span className="text-lg font-extrabold tabular-nums text-amber-300">{p.price}</span>
+              </span>
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-4 flex gap-2">
+          <a
+            href={`tel:${SUPPORT_PHONE.replace(/\s/g, "")}`}
+            className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-sm bg-amber-400 px-3 py-2.5 text-[13px] font-bold text-blue-950 transition hover:bg-amber-300"
+          >
+            <Phone size={14} />
+            {SUPPORT_PHONE}
+          </a>
+          <a
+            href={`https://wa.me/${SUPPORT_WHATSAPP}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={t("bidSupportWhatsapp")}
+            title={t("bidSupportWhatsapp")}
+            className="inline-flex items-center justify-center rounded-sm bg-emerald-500 px-3 py-2.5 text-white transition hover:bg-emerald-400"
+          >
+            <MessageCircle size={16} />
+          </a>
+        </div>
+      </div>
+    </section>
   );
 }

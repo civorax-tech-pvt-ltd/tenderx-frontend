@@ -2,7 +2,8 @@
 
 import { createContext, useCallback, useContext, useMemo, useState } from "react";
 import { api } from "@/lib/api";
-import { suggestedJvName, type FieldData } from "@/lib/validation";
+import { PERCENTAGE_KEYS } from "@/lib/constants";
+import { clampPercentage, suggestedJvName, type FieldData } from "@/lib/validation";
 
 export type DraftOut = {
   id: string;
@@ -40,7 +41,7 @@ const snapshotJson = (s: SavedSnapshot) => JSON.stringify([s.fieldData, s.linked
 const BidContext = createContext<BidContextValue | null>(null);
 
 const EMPTY_FIELD_DATA: FieldData = {
-  BID_TYPE: "Joint Venture",
+  BID_TYPE: "Single Bidder",
   BID_DATE: new Date().toISOString().slice(0, 10),
   BID_VALIDITY_PERIOD: "120 days",
 };
@@ -59,7 +60,9 @@ export function BidProvider({ children }: { children: React.ReactNode }) {
   const setField = useCallback(
     (key: string, value: string) => {
       setFieldData((prev) => {
-        const next = { ...prev, [key]: value };
+        if (Object.values(PERCENTAGE_KEYS).includes(key)) value = clampPercentage(prev, key, value);
+        // Short names are always stored in capitals (they form the JV name, e.g. "ABC - XYZ J/V").
+        const next = { ...prev, [key]: key.endsWith("_PARTNER_SHORT") ? value.toUpperCase() : value };
 
         if (key === "JV_NAME") {
           setJvNameManuallySet(value.length > 0);
@@ -80,6 +83,9 @@ export function BidProvider({ children }: { children: React.ReactNode }) {
   const setFields = useCallback((patch: FieldData) => {
     setFieldData((prev) => {
       const next = { ...prev, ...patch };
+      for (const k of Object.keys(next)) {
+        if (k.endsWith("_PARTNER_SHORT") && typeof next[k] === "string") next[k] = next[k].toUpperCase();
+      }
       // Auto-suggest JV name if any short name changed and user hasn't manually set it
       const shortChanged = ["LEAD_PARTNER_SHORT", "FIRST_PARTNER_SHORT", "SECOND_PARTNER_SHORT"].some(
         (k) => k in patch
